@@ -87,7 +87,7 @@ mongo:
 
 ***
 
-### Troubleshooting
+## Troubleshooting
 
 ***It's up and running but i get the default nginx gateway***
 
