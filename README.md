@@ -90,9 +90,11 @@ mongo:
 ### Troubleshooting
 
 ***It's up and running but i get the default nginx gateway***
+
 Do not worry, this application uses quasar CLI (Command Line Interface) and it runs internally the command **quasar build** and it takes a while for it to compile. Just wait a little and it will be done.
 
 ***I added my domains on the whitelist for CORS and it doesnt work***
+
 First, make sure that the domains are split by commas (,) and do not contain a bar at the end of the url, such as http://localhost(/).
 
 Also make sure they do not have whitespaces between them. 
