@@ -12,6 +12,7 @@ services:
             - PORT=${PORT}
             - WHITELIST=${WHITELIST}
             - SECRET=${SECRET}
+            - REFRESH_SECRET=${REFRESH_SECRET}
             - SALT_ROUNDS=${SALT_ROUNDS}
             - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
             - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
