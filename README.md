@@ -7,26 +7,29 @@ To get docker you can get it [here](https://docs.docker.com/get-docker/, "Docker
 
 ## Structure
 
-In order for this project to work you must create the following files and folders:
-* **mongo** (Folder). It's important to create this folder because it will store all the data from MongoDB to your computer.
-* **static** (Folder). This folder will be used to create the images that users will upload there to.
-* **default_avatar.jpg** (File-image). This image must go to the **static** folder at the root level. This image is the default profile image that users will get if they didn't login with a google account. You can find any on google, just **make sure it's a jpg** and the name is **default_avatar**, without any capitals.
+In order for this project to work you must have the following files and folders (they are included in the repository already):
+
+* **mongo** (Folder). It's important to have this folder because it will store all the data from MongoDB to your computer.
+  
+* **static** (Folder). This folder will be used to create and store the images that users will upload there to.
+
 * **.env** (File-environment). This file must be at the root of this folder. Check .env.sample file here.
+
 * **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client. Check it's own **.env.sample**.
 
 ***
 ## Running it
-To run this project, first you have to type in the terminal to ensure you are up to date with the versions on the hub.
+To run this project, first you have to type in the terminal to ensure you are up to date with the versions on the hub
 ```
 docker-compose pull
 ``` 
 
-Finally, run this command for full application logging.
+Finally, run this command for full application logging
 ```
 docker-compose up
 ```
 
-If you don't want any logging and you just want it to run in the background run it in detached mode by using the following command.
+If you don't want any logging, and you just want it to run in the background, simply run it in detached mode by using the following command
 ```
 docker-compose up -d
 ```
@@ -34,15 +37,20 @@ docker-compose up -d
 ***
 ## Considerations
 
-### JWT Secret
+### JWT Secret and Refresh Secret
 The backend server relies on json web tokens (JWT for short) and you shall need a secret. You should use any random string, since you will not need to remember it. 
 
-We recommend (since it's a node.js based project) to run this command on a **node.js** command line (you can get it by opening a terminal and typing in **node**)
+We recommend (since it's a node.js based project) to run this command on a **node.js** command line (you can open the node.js command line by opening a terminal and typing in **node**)
 ```javascript
 require('crypto').randomBytes(48, function(err, buffer) { 
     console.log(buffer.toString("hex")); 
 })
 ```
+
+If you don't have **node.js** installed you can go [here](https://randomkeygen.com/, "Random key generator") to get suggestions for your secrets. 
+
+Or you can generate them by yourself, you won't have to remember them.
+
 ### Backend port
 If you change the port in the **.env** file that corresponds to the backend, make sure you also change the port it runs internally in the docker-compose file.
 ```yml
@@ -89,24 +97,44 @@ mongo:
 
 ## Troubleshooting
 
-***It's up and running but i get the default nginx gateway***
+**It's up and running but i get the default nginx gateway**
 
 Do not worry, this application uses quasar CLI (Command Line Interface) and it runs internally the command **quasar build** and it takes a while for it to compile. Just wait a little and it will be done.
 
-***I added my domains on the whitelist for CORS and it doesnt work***
+**I added my domains on the whitelist for CORS and it doesnt work**
 
 First, make sure that the domains are split by commas (,) and do not contain a bar at the end of the url, such as http://localhost(/).
 
 Also make sure they do not have whitespaces between them. 
 
 This is an invalid example:
-http://localhost:8080, http://localhost:8081
+http://localhost:8080, http://localhost:8081/
 
 This is a valid example:
 http://localhost:8080,http://localhost:8081
 
 Also, you should do the same for the back-end server url in the environment file for the front-end.
 
-***I changed something in the backend or in the front-end but i do not see the changes***
+## Known bugs
+This is a project made by two persons, so the chances of having bugs is really high.
 
-Keep in mind that this is the production version. If you want to make any changes you must go to the container and change it yourself in the src (or src-electron) folder.
+For now we have tested almost everything and there are some bugs left to fix (or that we don't know how to fix yet). These are the following:
+
+### Chat
+If you open both clients on the same account (electron and web) and you go to the chat page on any of them, it will load as usual. 
+
+But if one of the clients leave the chat room, the user that you're logged in with, it will disappear for everyone, but the user that's left logged in will still be able to talk (even tho it did disappear from the user's list).
+
+### Data persistence
+If you select a network (or a host) in the web client, it will not appear as selected in the electron client. 
+
+That's because they are saved in the local storage of each browser, and electron is indeed another web browser, so there's no way to share the data (at least there's not a way we don't know of).
+
+There's also another bug related to this which is that when the user updates the user profile on any client, it will not be applied to the other client (if it's open).
+
+### Port Scanner looks stuck
+If the operation you requested to the scanner takes longer than what you'd expect, it's probably because it's stuck on any operation that is not successfully completed.
+
+Keep in mind that it uses two wrappers; one for the **arp** command and other for the **ping** command of each platform.
+
+If it looks stuck, you can just kill and re-open the electron client.
