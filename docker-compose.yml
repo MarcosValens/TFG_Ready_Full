@@ -20,6 +20,8 @@ services:
             - MONGO_PASSWORD=${MONGO_PASSWORD}
             - MODE=production
             - NODE_ENV=production
+        depends_on: 
+            - mongo
     mongo:
         container_name: mongo
         image: mongo

@@ -13,11 +13,30 @@ In order for this project to work you must have the following files and folders 
   
 * **static** (Folder). This folder will be used to create and store the images that users will upload there to.
 
-* **.env** (File-environment). This file must be at the root of this folder. Check the file comments.
+* **.env** (File-environment). This file must be at the root of this folder.
 
-* **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client. Check the file comments.
+* **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client.
 
 ***
+
+## Environment Variables
+
+### Client
+* BACKEND_URL: This is the url for the base backend server url. Example http://localhost:8000
+***
+### Server
+* SECRET: This is the JWT Secret
+* REFRESH_SECRET: This is the refresh token secret
+* PORT: This is the server's port
+* WHITELIST: This is the cors whitelist
+* MONGO_USER: This is the MongoDB User
+* MONGO_PASSWORD: This is the MongoDB Password
+* SALT_ROUNDS: This is the salt rounds for hashing the password
+* GOOGLE_CLIENT_ID: This is the google client id to your application. It only requires user profile scope.
+* GOOGLE_CLIENT_SECRET: This is the google client secret to your application
+* MODE: Leave as default
+* NODE_ENV: Leave as default
+
 ## Considerations
 
 ### JWT Secret and Refresh Secret
