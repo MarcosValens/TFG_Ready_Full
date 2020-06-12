@@ -38,6 +38,8 @@ In order for this project to work you must have the following files and folders 
 * NODE_ENV: Leave as default
 
 ## Considerations
+### IMPORTANT
+On windows or MacOS you will have to remove all mongoDB volumes because the default Docker setup on Windows and OS X uses a VirtualBox VM to host the Docker daemon. Unfortunately, the mechanism VirtualBox uses to share folders between the host system and the Docker container is not compatible with the memory mapped files used by MongoDB. This means that it is not possible to run a MongoDB container with the data directory mapped to the host.
 
 ### JWT Secret and Refresh Secret
 The backend server relies on json web tokens (JWT for short) and you shall need a secret. You should use any random string, since you will not need to remember it. 
