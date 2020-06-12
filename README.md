@@ -93,6 +93,11 @@ If you don't want any logging, and you just want it to run in the background, si
 docker-compose up -d
 ```
 
+To stop this proyect, you can type in the terminal the following command
+```
+docker-compose down
+```
+
 ***
 
 ## Troubleshooting
