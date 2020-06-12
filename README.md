@@ -20,6 +20,9 @@ In order for this project to work you must have the following files and folders 
 ***
 ## Considerations
 
+### Getting Started
+Each ***.env*** file ends with a ***.sample*** extension. Make sure to remove the last extension, otherwise it will not work.
+
 ### JWT Secret and Refresh Secret
 The backend server relies on json web tokens (JWT for short) and you shall need a secret. You should use any random string, since you will not need to remember it. 
 
