@@ -13,15 +13,12 @@ In order for this project to work you must have the following files and folders 
   
 * **static** (Folder). This folder will be used to create and store the images that users will upload there to.
 
-* **.env** (File-environment). This file must be at the root of this folder. Check .env.sample file here.
+* **.env** (File-environment). This file must be at the root of this folder. Check the file comments.
 
-* **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client. Check it's own **.env.sample**.
+* **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client. Check the file comments.
 
 ***
 ## Considerations
-
-### Getting Started
-Each ***.env*** file ends with a ***.sample*** extension. Make sure to remove the last extension, otherwise it will not work.
 
 ### JWT Secret and Refresh Secret
 The backend server relies on json web tokens (JWT for short) and you shall need a secret. You should use any random string, since you will not need to remember it. 
