@@ -18,23 +18,6 @@ In order for this project to work you must have the following files and folders 
 * **env** (Folder). This folder will contain a **.env** file which will be used by the front-end client. Check it's own **.env.sample**.
 
 ***
-## Running it
-To run this project, first you have to type in the terminal to ensure you are up to date with the versions on the hub
-```
-docker-compose pull
-``` 
-
-Finally, run this command for full application logging
-```
-docker-compose up
-```
-
-If you don't want any logging, and you just want it to run in the background, simply run it in detached mode by using the following command
-```
-docker-compose up -d
-```
-
-***
 ## Considerations
 
 ### JWT Secret and Refresh Secret
@@ -92,6 +75,23 @@ mongo:
             - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
             - MONGO_INITDB_DATABASE=portscanner
 ```
+***
+
+## Running it
+To run this project, first you have to type in the terminal to ensure you are up to date with the versions on the hub
+```
+docker-compose pull
+``` 
+
+Finally, run this command for full application logging
+```
+docker-compose up
+```
+
+If you don't want any logging, and you just want it to run in the background, simply run it in detached mode by using the following command
+```
+docker-compose up -d
+```
 
 ***
 
@@ -118,12 +118,7 @@ Also, you should do the same for the back-end server url in the environment file
 ## Known bugs
 This is a project made by two persons, so the chances of having bugs is really high.
 
-For now we have tested almost everything and there are some bugs left to fix (or that we don't know how to fix yet). These are the following:
-
-### Chat
-If you open both clients on the same account (electron and web) and you go to the chat page on any of them, it will load as usual. 
-
-But if one of the clients leave the chat room, the user that you're logged in with, it will disappear for everyone, but the user that's left logged in will still be able to talk (even tho it did disappear from the user's list).
+For now we have tested almost everything and there are some known bugs left to fix (or that we don't know how to fix yet). These are the following:
 
 ### Data persistence
 If you select a network (or a host) in the web client, it will not appear as selected in the electron client. 
